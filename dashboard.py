@@ -18,7 +18,7 @@ st.set_page_config(
 # ── Load model and data ───────────────────────────────────────────────────
 @st.cache_resource
 def load_model():
-       model = xgb.XGBRegressor()
+    model = xgb.XGBRegressor()
     model.load_model('model/xgb_model.json')
     return model
 
