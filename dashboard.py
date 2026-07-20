@@ -17,9 +17,14 @@ st.set_page_config(
 # ── Load model and data ───────────────────────────────────────────────────
 @st.cache_resource
 def load_model():
-    with open('model/xgb_model.pkl', 'rb') as f:
-        return pickle.load(f)
+    import xgboost as xgb
+    model = xgb.XGBRegressor()
+    model.load_model('model/xgb_model.json')
+    return model
 
+@st.cache_resource
+def load_scaler():
+    return joblib.load('model/scaler.pkl') 
 @st.cache_data
 def load_data():
     return pd.read_csv('data/processed.csv')
