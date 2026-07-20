@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import mean_absolute_error
 import warnings
 warnings.filterwarnings('ignore')
+import xgboost as xgb
+import joblib
 
 # ── Page config ───────────────────────────────────────────────────────────
 st.set_page_config(
@@ -16,8 +18,7 @@ st.set_page_config(
 # ── Load model and data ───────────────────────────────────────────────────
 @st.cache_resource
 def load_model():
-    import xgboost as xgb
-    model = xgb.XGBRegressor()
+       model = xgb.XGBRegressor()
     model.load_model('model/xgb_model.json')
     return model
 
